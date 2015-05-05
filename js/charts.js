@@ -180,11 +180,53 @@ var cpsCashOptions = {
     }
   },
   plugins: [
-    Chartist.plugins.tooltip()
+    Chartist.plugins.tooltip({
+      currency: "PHP "
+    })
   ]
 }
 
 new Chartist.Bar('#cps-cash', cpsCashData, cpsCashOptions);
+
+
+
+
+var ngTaxData = {
+  labels: ["2003","2004","2005","2006","2007","2008","2009","2010","2011","2012"],
+  series: [
+    {
+      name: "Bureau of Internal Revenue",
+      data: [ 427350.00,470329.00,542697.00,652734.00,713605.00,778581.00,750287.00,822623.00,924146.00,1057916.00 ]
+    },
+    {
+      name: "Bureau of Customs",
+      data: [ 117201.00,127269.00,154566.00,198161.00,209439.00,260248.00,220307.00,259241.00,265108.00,289866.00 ]
+    },
+    {
+      name: "Other Offices",
+      data: [ 5917.00,7366.00,8352.00,8962.00,9893.00,10360.00,11037.00,11779.00,12812.00,13299.00 ]
+    }
+  ]
+}
+
+
+new Chartist.Bar('#ng-tax', ngTaxData, {
+  stackBars: true,
+  axisY: {
+    labelInterpolationFnc: function(value) {
+      return (value / 1000) + 'k';
+    }
+  },
+  plugins: [
+    Chartist.plugins.tooltip({
+      currency: "PHP "
+    })
+  ]
+});
+
+
+
+
 
 
 // generalized tooltip code
