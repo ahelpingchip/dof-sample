@@ -24,10 +24,6 @@
   border-top-color:#F4C63D;
 }
 
-#cps-debt .ct-bar {
-  stroke-width: 4%;
-}
-
-#cps-cash .ct-bar {
+.ct-chart .ct-bar {
   stroke-width: 4%;
 }

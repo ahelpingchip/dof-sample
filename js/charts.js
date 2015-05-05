@@ -225,6 +225,45 @@ new Chartist.Bar('#ng-tax', ngTaxData, {
 });
 
 
+var ngNonTaxData = {
+  labels: ["2003","2004","2005","2006","2007","2008","2009","2010","2011","2012"],
+  series: [
+    {
+      name: "Bureau of Treasury Income",
+      data: [  56657.00,64690.00,70597.00,74446.00,67932.00,63681.00,69912.00,54315.00,75236.00,84080.00  ]
+    },
+    {
+      name: "Fees and Other Charges",
+      data: [ 18635.00,19574.00,18978.00,16761.00,21637.00,16409.00,19253.00,22820.00,26048.00,27793.00 ]
+    },
+    {
+      name: "Sale of Assets",
+      data: [  567.00,420.00,2430.00,5815.00,90619.00,31289.00,1390.00,914.00,930.00,8348.00  ]
+    },
+    {
+      name: "Marcos Wealth",
+      data: [  0,8854.00,7300.00,8358.00,0,0,0,0,0,0    ]
+    },
+    {
+      name: "Grants and Others",
+      data: [  13410.00,8216.00,11239.00,14401.00,23435.00,42337.00,51025.00,36234.00,55662.00,53630.00  ]
+    }
+  ]
+}
+
+new Chartist.Bar('#ng-nontax', ngNonTaxData, {
+  stackBars: true,
+  axisY: {
+    labelInterpolationFnc: function(value) {
+      return (value / 1000) + 'k';
+    }
+  },
+  plugins: [
+    Chartist.plugins.tooltip({
+      currency: "PHP "
+    })
+  ]
+});
 
 
 
