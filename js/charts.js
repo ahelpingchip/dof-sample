@@ -211,8 +211,8 @@ var ngTaxData = {
 }
 
 
-new Chartist.Bar('#ng-tax', ngTaxData, {
-  stackBars: true,
+new Chartist.Line('#ng-tax', ngTaxData, {
+  // stackBars: true,
   axisY: {
     labelInterpolationFnc: function(value) {
       return (value / 1000) + 'k';
