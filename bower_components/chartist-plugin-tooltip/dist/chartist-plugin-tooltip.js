@@ -68,6 +68,9 @@
                 tooltipText += label.text() + '<br>';
               }
             }
+            if ($point.parent().attr('ct:series-name')) {
+              tooltipText += $point.parent().attr('ct:series-name') + '<br>';
+            }
           }
 
           var value = $point.attr('ct:value');
