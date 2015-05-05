@@ -1,3 +1,7 @@
+/* these are the styles for the tooltip!
+it's kinda ugly and temporary lang
+feel free to restyle, but I intend to fix it rin */
+
 .tooltip {
   position:absolute;
   display:inline-block;
@@ -24,6 +28,33 @@
   border-top-color:#F4C63D;
 }
 
+/* below this line are styles for the charts themselves. */
+
+/* this rule adjusts the width of bar charts. */
+
 .ct-chart .ct-bar {
   stroke-width: 4%;
+}
+
+/* to adjust the color of chart bars and lines, please see below
+
+
+#cps-debt is which chart you want to adjust.
+
+.ct-series-a is which series in that chart you want to adjust.
+
+In this example, ct-series-a is the Foreign stuff,
+
+and ct-series-b is the Domestic stuff!
+
+
+*/
+
+#cps-debt .ct-series-a .ct-bar {
+  stroke: hotpink;
+}
+
+
+#cps-debt .ct-series-b .ct-bar {
+  stroke: purple;
 }
