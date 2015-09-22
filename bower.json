@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
+    "chartist": "0.7.4",
+    "chartist-plugin-tooltip": "0.0.9",
     "foundation": "zurb/bower-foundation",
-    "chartist-plugin-tooltip": "~0.0.10"
+    "lodash": "~3.10.1",
+    "papaparse": "~4.1.2"
+  },
+  "resolutions": {
+    "chartist": "0.9.1"
   }
 }

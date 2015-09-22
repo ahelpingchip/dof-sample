@@ -1,0 +1,118 @@
+<html>
+
+  <head>
+
+    <title>
+      Parsing Test
+    </title>
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="/bower_components/lodash/lodash.min.js"></script>
+    <script src="/bower_components/papaparse/papaparse.min.js"></script>
+    <script>
+      var csv = "dof-transactions-2a.csv";
+      var rawData;
+      var plainData;
+
+      var firstYear;
+      var lastYear;
+
+      Papa.parse(csv, {
+        delimiter: ",",
+        download: true,
+      	header: false,
+        dynamicTyping: true,
+        complete: function(results) {
+          rawData = results.data;
+
+          _.forEach(rawData, function(n){
+            if (n[0] === parseInt(n[0], 10)) {
+              n[0] = n[0].toString();
+            }
+          });
+
+          plainData = rawData.slice(0);
+          plainData.splice(1,3);
+
+          firstYear = plainData[1][0];
+          lastYear = plainData[plainData.length - 1][0];
+
+
+          console.log("Parsing complete:", results);
+          console.log("Data + desc:", rawData);
+          console.log("Data only:", plainData);
+          console.log("Earliest Data:", firstYear, "Latest Data:", lastYear)
+        }
+      });
+
+      google.load('visualization', '1', {'packages':['bar']});
+
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var liveData = new google.visualization.arrayToDataTable(plainData);
+
+        // liveData.addColumn('string', 'Topping');
+        // liveData.addColumn('number', 'Slices');
+        // liveData.addRows([
+        //   ['Mushrooms', 3],
+        //   ['Onions', 1],
+        //   ['Olives', 1],
+        //   ['Zucchini', 1],
+        //   ['Pepperoni', 2]
+        // ]);
+
+        var ngTaxData = new google.visualization.DataView(liveData);
+        ngTaxData.setColumns([0,1,2,3])
+
+        var ngTaxChart = new google.charts.Bar(document.getElementById('ng_tax_chart'));
+
+        ngTaxChart.draw(ngTaxData, google.charts.Bar.convertOptions(
+            {
+              isStacked: true,
+              fontName: "Arial",
+              chart: {
+                title: 'National Government',
+                subtitle: 'Tax Revenues: ' + firstYear + " to " + lastYear,
+              }
+            }
+          )
+        );
+
+
+
+
+        // ng_nontax_chart.draw(liveData, options);
+        // ng_cash_chart.draw(liveData, options);
+        // ng_debt_chart.draw(liveData, options);
+        // cps_fin_chart.draw(liveData, options);
+        // cps_debt_chart.draw(liveData, options);
+
+      }
+
+
+      var timeOut = null;
+
+      window.onresize = function(){
+          if (timeOut != null)
+              clearTimeout(timeOut);
+
+          timeOut = setTimeout(function(){
+              drawChart();
+          }, 500);
+      };
+
+    </script>
+
+  </head>
+
+  <body>
+    eh
+
+    <div style="height: 500px;">
+      <div id="ng_tax_chart" style="width:100%; height: 500px;"></div>
+    </div>
+
+  </body>
+</html>

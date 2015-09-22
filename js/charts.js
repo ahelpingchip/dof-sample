@@ -114,7 +114,7 @@ var cpsDebtData = {
       data: [3542958.43,3589212.58,3288499.82,3029740.79,2571751.20,2935076.64,2997990.79,2899717.28,2820210.14,2275735.71]
     }
   ]
-}
+};
 
 var cpsDebtOptions = {
   stackBars: true,
@@ -128,7 +128,7 @@ var cpsDebtOptions = {
       currency: "PHP "
     })
   ]
-}
+};
 
 new Chartist.Bar('#cps-debt', cpsDebtData, cpsDebtOptions);
 
@@ -171,7 +171,7 @@ var cpsCashData = {
       data: [ -199868.00,-187057.00,-146778.00,-64791.00,-12441.00,-68117.00,-298532.00,-314458.00,-197754.00,-242827.00]
     }
   ]
-}
+};
 
 var cpsCashOptions = {
   stackBars: true,
@@ -185,10 +185,10 @@ var cpsCashOptions = {
       currency: "PHP "
     })
   ]
-}
+};
 
 new Chartist.Bar('#cps-cash', cpsCashData, cpsCashOptions);
-
+$("#cps-cash").append();
 
 
 
@@ -208,7 +208,7 @@ var ngTaxData = {
       data: [ 5917.00,7366.00,8352.00,8962.00,9893.00,10360.00,11037.00,11779.00,12812.00,13299.00 ]
     }
   ]
-}
+};
 
 
 new Chartist.Line('#ng-tax', ngTaxData, {
@@ -250,7 +250,7 @@ var ngNonTaxData = {
       data: [  13410.00,8216.00,11239.00,14401.00,23435.00,42337.00,51025.00,36234.00,55662.00,53630.00  ]
     }
   ]
-}
+};
 
 new Chartist.Bar('#ng-nontax', ngNonTaxData, {
   stackBars: true,
