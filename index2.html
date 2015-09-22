@@ -230,8 +230,12 @@
         );
 
 
+        var formatter = new google.visualization.NumberFormat({
+          pattern:'#,###.#%'
+        });
 
-
+        formatter.format(ngDebtDataPre, 4);
+        formatter.format(ngDebtDataPre, 5);
 
         // debt vs GDP
 
