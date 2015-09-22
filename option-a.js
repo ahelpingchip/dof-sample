@@ -1,4 +1,4 @@
-var csv = '/uploads/live-data.csv';
+var csv = 'uploads/live-data.csv';
 var rawData;
 var plainData;
 
