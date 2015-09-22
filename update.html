@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select new data to upload.
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload CSV" name="submit">
+</form>
+
+<p>
+  <a href="/uploads/live-data.csv">Backup current CSV data</a>
+</p>
+
+<p>
+  <a href="/uploads/template.csv">Download template CSV</a>
+</p>
+
+<h3>Tips</h3>
+
+<ul>
+  <li>please follow the template</li>
+  <li>do not use commas in number entries</li>
+  <li>do not enter extra / unneccessary cells</li>
+  <li>this replaces, not appends, so make sure historical data is in new file too</li>
+  <li>(rewrite and style this page)</li>
+</ul>
+
+
+</body>
+</html>
