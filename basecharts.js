@@ -7,6 +7,10 @@ var lastYear;
 
 var defaultColors = ["#382b70","#5B1E58","#8c5189","#FFCD32","#c49912","#ffe081"]
 
+var purpleColors = ["#382b70","#5B1E58","#8c5189"]
+var yellowColors = ["#FFCD32","#c49912","#ffe081"]
+
+
 Papa.parse(csv, {
   delimiter: ",",
   download: true,
@@ -221,10 +225,7 @@ function drawChart() {
    )
   );
 
-
-
 }
-
 
 var timeOut = null;
 
@@ -236,3 +237,68 @@ window.onresize = function(){
         drawChart();
     }, 500);
 };
+
+
+function makeChart (urlToCSV, id, type, color) {
+  var modCsv = urlToCSV;
+  var modData;
+  var chosenColor;
+
+  Papa.parse(csv, {
+    delimiter: ",",
+    download: true,
+    header: false,
+    dynamicTyping: true,
+    complete: function(results) {
+      modData = results.data;
+
+      _.forEach(modData, function(n){
+        if (n[0] === parseInt(n[0], 10)) {
+          n[0] = n[0].toString();
+        }
+      });
+    }
+  });
+
+  if (color === "purple") {
+    chosenColor =  purpleColors;
+  } else if (color === "yellow") {
+    chosenColor =  yellowColors;
+  } else {
+    chosenColor = defaultColors;
+  }
+
+  if (type === "line") {
+
+    var modChartData = new google.visualization.DataView(modData);
+
+    var modChart = new google.charts.Line(document.getElementById('ng_debt_chart2'));
+
+    modChart.draw(modChartData, google.charts.Line.convertOptions(
+        {
+
+        }
+     )
+    );
+
+  } else {
+
+
+    var modChartData = new google.visualization.DataView(modData);
+
+    var modChart = new google.charts.Bar(document.getElementById(id));
+
+    modChart.draw(modChartData, google.charts.Bar.convertOptions(
+        {
+          isStacked: true,
+          colors: chosenColor
+        }
+     )
+    );
+
+
+  }
+
+
+
+}
