@@ -9,9 +9,13 @@
     <script src="https://www.google.com/jsapi"></script>
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/papaparse/papaparse.min.js"></script>
-    <script src="option-a.js"></script>
+    <script src="basecharts.js"></script>
 
     <style>
+      body {
+        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+      }
       figure {
         margin: 0;
         padding: 0;
@@ -31,7 +35,6 @@
         max-width: 300px;
         text-align: center;
         margin: 10px auto;
-        font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
       }
 
       section a {
@@ -97,6 +100,46 @@
     <div style="height: 500px;">
       <figure id="cps_debt_chart" style="width:100%; height: 100%;"></figure>
     </div>
+
+
+    <br> <!-- oo, kadiri, ang daming br HAHA -->
+    <br>
+
+    <h2>Modular examples</h2>
+
+    <br>
+
+    <h3>TABLE 31. PHILIPPINE DEPOSIT INSURANCE CORPORATION (PDIC)</h3>
+
+    <h4>ASSESSMENT PREMIUM COLLECTIONS FROM MEMBER BANKS
+      <br />
+      CY 1999 - 2013
+    </h4>
+
+    <script>
+      makeChart("uploads/sample1.csv", "sample1", "bar", "purple");
+    </script>
+
+    <div style="height: 500px;">
+      <figure id="sample1" style="width:100%; height: 100%;"></figure>
+    </div>
+
+    <br>
+    <br>
+
+    <h3>TABLE 30.- GOVERNMENT SECURITIES HOLDINGS</h3>
+      <h4>OF PRIVATE INSURANCE COMPANIES (At Cost) <br />
+        CY 1999 - 2013 <br />
+        (In Billion Pesos)</h4>
+
+        <script>
+          makeChart("uploads/sample2.csv", "sample2", "bar", "yellow");
+        </script>
+
+        <div style="height: 500px;">
+          <figure id="sample2" style="width:100%; height: 100%;"></figure>
+        </div>
+
 
   </body>
 </html>

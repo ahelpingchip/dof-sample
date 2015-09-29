@@ -244,7 +244,7 @@ function makeChart (urlToCSV, id, type, color) {
   var modData;
   var chosenColor;
 
-  Papa.parse(csv, {
+  Papa.parse(modCsv, {
     delimiter: ",",
     download: true,
     header: false,
@@ -257,6 +257,8 @@ function makeChart (urlToCSV, id, type, color) {
           n[0] = n[0].toString();
         }
       });
+
+      doThings();
     }
   });
 
@@ -268,37 +270,49 @@ function makeChart (urlToCSV, id, type, color) {
     chosenColor = defaultColors;
   }
 
-  if (type === "line") {
+  function doThings () {
 
-    var modChartData = new google.visualization.DataView(modData);
+    if (type === "line") {
 
-    var modChart = new google.charts.Line(document.getElementById('ng_debt_chart2'));
+      var modChartData = new google.visualization.DataView(modData);
 
-    modChart.draw(modChartData, google.charts.Line.convertOptions(
-        {
+      var modChart = new google.charts.Line(document.getElementById(id));
 
-        }
-     )
-    );
+      modChart.draw(modChartData, google.charts.Line.convertOptions(
+          {
 
-  } else {
+          }
+       )
+      );
 
+    } else {
 
-    var modChartData = new google.visualization.DataView(modData);
+      var modChartData = new google.visualization.arrayToDataTable(modData);
 
-    var modChart = new google.charts.Bar(document.getElementById(id));
+      var modChart = new google.charts.Bar(document.getElementById(id));
 
-    modChart.draw(modChartData, google.charts.Bar.convertOptions(
-        {
-          isStacked: true,
-          colors: chosenColor
-        }
-     )
-    );
+      modChart.draw(modChartData, google.charts.Bar.convertOptions(
+          {
+            isStacked: true,
+            colors: chosenColor
+          }
+       )
+      );
 
-
+    }
   }
 
+
+  var timeOut = null;
+
+  window.onresize = function(){
+      if (timeOut != null)
+          clearTimeout(timeOut);
+
+      timeOut = setTimeout(function(){
+          doThings();
+      }, 500);
+  };
 
 
 }
