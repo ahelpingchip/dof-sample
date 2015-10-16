@@ -4,8 +4,6 @@ AuthBasicProvider file
 AuthUserFile ../htdocs/dof-sample/backend/.htgoaway
 Require valid-user
 
-DirectoryIndex .index.php
-
 <Files ~ "^\.ht">
 Order allow,deny
 Deny from all
