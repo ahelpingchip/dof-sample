@@ -1,4 +1,7 @@
 <?php 
+
+	error_reporting(E_ERROR | E_PARSE);
+
 	$target = ""; 
 	$target = $target . basename( $_FILES['uploaded']['name']) ; 
 	$ok=1; 

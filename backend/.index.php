@@ -34,6 +34,8 @@
       <tbody>
       <?php
 
+        error_reporting(E_ERROR | E_PARSE);
+
         $myDirectory=opendir(".");
         
         // Gets each entry
