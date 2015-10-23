@@ -1,0 +1,10 @@
+AuthName "DOF Charts Backend"
+AuthType Basic
+AuthBasicProvider file
+AuthUserFile ../htdocs/dof-sample/backend/.htgoaway
+Require valid-user
+
+<Files ~ "^\.ht">
+Order allow,deny
+Deny from all
+</Files>
