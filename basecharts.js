@@ -238,7 +238,6 @@ window.onresize = function(){
     }, 500);
 };
 
-
 function makeChart (urlToCSV, id, type, color) {
   var modCsv = urlToCSV;
   var modData;
@@ -257,6 +256,10 @@ function makeChart (urlToCSV, id, type, color) {
           n[0] = n[0].toString();
         }
       });
+
+      if ( modData[modData.length - 1].length === 1) {
+        modData.pop();
+      }
 
       doThings();
     }
